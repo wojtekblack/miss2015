@@ -1,8 +1,10 @@
-package pl.edu.agh.miss;
+package pl.edu.agh.miss.swarm;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.edu.agh.miss.particle.SpeciesParticle;
+import pl.edu.agh.miss.particle.SpeciesType;
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
 

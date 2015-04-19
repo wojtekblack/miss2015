@@ -1,12 +1,12 @@
-package pl.edu.agh.miss;
+package pl.edu.agh.miss.particle;
 
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
 import net.sourceforge.jswarm_pso.Swarm;
 
-public class ParticleUpdateBC extends ParticleUpdate {
+public class ParticleUpdateEgocentric extends ParticleUpdate {
 
-	public ParticleUpdateBC(Particle particle) {
+	public ParticleUpdateEgocentric(Particle particle) {
 		super(particle);
 		// TODO Auto-generated constructor stub
 	}
@@ -17,7 +17,6 @@ public class ParticleUpdateBC extends ParticleUpdate {
 		double velocity[] = particle.getVelocity();
 		double globalBestPosition[] = swarm.getBestPosition();
 		double particleBestPosition[] = particle.getBestPosition();
-		double neighBestPosition[] = swarm.getNeighborhoodBestPosition(particle);
 
 		// Update velocity and position
 		for (int i = 0; i < position.length; i++) {
@@ -26,8 +25,7 @@ public class ParticleUpdateBC extends ParticleUpdate {
 
 			// Update velocity
 			velocity[i] = swarm.getInertia() * velocity[i] // Inertia
-					+ Math.random() * swarm.getParticleIncrement() * (particleBestPosition[i] - position[i]) // Local best
-					+ Math.random() * swarm.getNeighborhoodIncrement() * (neighBestPosition[i] - position[i]) // Neighborhood best					
+					+ Math.random() * swarm.getParticleIncrement() * (particleBestPosition[i] - position[i]) // Local best			
 					+ Math.random() * swarm.getGlobalIncrement() * (globalBestPosition[i] - position[i]); // Global best
 		}
 	}

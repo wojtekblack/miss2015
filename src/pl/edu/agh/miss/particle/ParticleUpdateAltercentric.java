@@ -1,4 +1,4 @@
-package pl.edu.agh.miss;
+package pl.edu.agh.miss.particle;
 
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;

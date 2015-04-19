@@ -9,7 +9,6 @@ import net.sourceforge.jswarm_pso.Swarm;
 import pl.edu.agh.miss.chart.Chart;
 import pl.edu.agh.miss.chart.Point;
 import pl.edu.agh.miss.chart.ScatterChart;
-import pl.edu.agh.miss.multidimensional.AlgebraUtils;
 import pl.edu.agh.miss.multidimensional.RastriginFunction;
 import pl.edu.agh.miss.particle.ParticleUpdateAltercentric;
 import pl.edu.agh.miss.particle.ParticleUpdateBC;
@@ -18,12 +17,63 @@ import pl.edu.agh.miss.particle.SpeciesParticle;
 import pl.edu.agh.miss.particle.SpeciesType;
 import pl.edu.agh.miss.swarm.MultiSwarm;
 import pl.edu.agh.miss.swarm.SwarmInformation;
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_DIMENTIONS;
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_ITERATIONS;
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_PARTICLES;
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_SKIPPED_ITERATIONS;
 
-public class Main {
-
+public class Comparison {
+	private static List<Point> standardResults = new ArrayList<Point>();
+	private static List<Point> multiSpeciesResults = new ArrayList<Point>();
+	
 	public static void main(String[] args) {
-		System.out.println("Example of Particle MultiSwarm Optimization: Optimizing Rastrijin's funtion");
+		System.out.println("Comparison between standard PSO and multi species PSO");
+		System.out.println("Number of dimensions: " + NUMBER_OF_DIMENTIONS);
+		System.out.println("Number of iterations: " + NUMBER_OF_ITERATIONS);
+		System.out.println();
+		
+		System.out.println("Starting standard optimization");
+		runStandardSolution();
+		
+		System.out.println("Starting multi species optimization");
+		runMultiSpeciesSolution();
+		
+		Chart chart = new ScatterChart().setTitle("PSO Ristrigin optimizing, " + NUMBER_OF_DIMENTIONS + " dimensions, " + NUMBER_OF_ITERATIONS + " iterations").
+				setXAxisTitle("Iterations").setYAxisTitle("Fitness");
+		chart.addSeries("Standard", standardResults);
+		chart.addSeries("Multi species", multiSpeciesResults);
+		chart.save();
+	}
+	
+	private static void runStandardSolution(){
+		Swarm swarm = new Swarm(NUMBER_OF_PARTICLES, new StandardParticle(), new RastriginFunction(false));
+		
+		// Use neighborhood
+		Neighborhood neigh = new Neighborhood1D(NUMBER_OF_PARTICLES / 5, true);
+		swarm.setNeighborhood(neigh);
+		swarm.setNeighborhoodIncrement(0.9);
 
+		swarm.setInertia(0.95);
+		swarm.setParticleIncrement(0.8);
+		swarm.setGlobalIncrement(0.8);
+		swarm.setMaxPosition(100);
+		swarm.setMinPosition(-100);
+		swarm.setMaxMinVelocity(0.1);
+		
+
+		for (int i = 0; i < NUMBER_OF_ITERATIONS; i++){
+			swarm.evolve();
+			
+			if(i % 100 == 0 && i > NUMBER_OF_SKIPPED_ITERATIONS) {
+				standardResults.add(new Point((double)i, swarm.getBestFitness()));
+			}
+		}
+		
+		System.out.println("Best fitness: " + swarm.getBestFitness());
+	}
+	
+	
+	private static void runMultiSpeciesSolution(){
 		SpeciesParticle egocentricParticle = new MyParticle(SpeciesType.EGOCENTRIC);
 		SwarmInformation egocentricSwarmInfo = new SwarmInformation(
 				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 3, 
@@ -44,17 +94,7 @@ public class Main {
 		);
 		
 		SwarmInformation swarmInfos[] = {egocentricSwarmInfo, altercentricSwarmInfo, bcSwarmInfo};
-		
-		/*SpeciesParticle simpleParticle = new MyParticle(SpeciesType.EGOCENTRIC);
-		SwarmInformation simpleSwarmInfo = new SwarmInformation(
-				Swarm.DEFAULT_NUMBER_OF_PARTICLES, 
-				simpleParticle,
-				new ParticleUpdateSimple(simpleParticle)
-		);
-		
-		SwarmInformation swarmInfos[] = {simpleSwarmInfo};*/
-		
-		// Create a swarm (using 'MyParticle' as sample particle and 'MyFitnessFunction' as finess function)
+
 		MultiSwarm multiSwarm = new MultiSwarm(swarmInfos, new RastriginFunction());
 
 		// Use neighborhood
@@ -71,24 +111,14 @@ public class Main {
 		multiSwarm.setMaxPosition(100);
 		multiSwarm.setMinPosition(-100);
 
-		int numberOfIterations = 5000;
-		List<Point> points = new ArrayList<Point>();
-		for(int i = 0; i < numberOfIterations; ++i) {
+		for(int i = 0; i < NUMBER_OF_ITERATIONS; ++i) {
 			// Evolve swarm
 			multiSwarm.evolve();
-			if(i % 100 == 0 && i > 500) {
-				points.add(new Point((double)i, multiSwarm.getBestFitness()));
-				System.out.println(multiSwarm.getBestFitness());
+			if(i % 100 == 0 && i > NUMBER_OF_SKIPPED_ITERATIONS) {
+				multiSpeciesResults.add(new Point((double)i, multiSwarm.getBestFitness()));
 			}
 		}
 		
-		Chart chart = new ScatterChart().setTitle("A").setXAxisTitle("a").setYAxisTitle("b");
-		chart.addSeries("w", points);
-		chart.save();
-
-		// Show best position
-		double bestPosition[] = multiSwarm.getBestPosition();
-		System.out.println("Best position: [" + bestPosition[0] + ", " + bestPosition[1] + " ]\nBest fitness: " + multiSwarm.getBestFitness() + "\nKnown Solution: [0.0, 0.0]");
+		System.out.println("Best fitness: " + multiSwarm.getBestFitness());
 	}
-
 }

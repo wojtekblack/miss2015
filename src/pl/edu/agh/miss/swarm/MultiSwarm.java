@@ -1,5 +1,7 @@
-package pl.edu.agh.miss;
+package pl.edu.agh.miss.swarm;
 
+import pl.edu.agh.miss.MyParticle;
+import pl.edu.agh.miss.particle.SpeciesParticle;
 import net.sourceforge.jswarm_pso.FitnessFunction;
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
