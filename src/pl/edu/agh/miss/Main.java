@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sourceforge.jswarm_pso.Neighborhood;
 import net.sourceforge.jswarm_pso.Neighborhood1D;
+import net.sourceforge.jswarm_pso.ParticleUpdateSimple;
 import net.sourceforge.jswarm_pso.Swarm;
 import pl.edu.agh.miss.chart.Chart;
 import pl.edu.agh.miss.chart.Point;
@@ -24,7 +25,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Example of Particle MultiSwarm Optimization: Optimizing Rastrijin's funtion");
 
-		SpeciesParticle egocentricParticle = new MyParticle(SpeciesType.EGOCENTRIC);
+		/*SpeciesParticle egocentricParticle = new MyParticle(SpeciesType.EGOCENTRIC);
 		SwarmInformation egocentricSwarmInfo = new SwarmInformation(
 				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 3, 
 				egocentricParticle,
@@ -43,16 +44,16 @@ public class Main {
 				new ParticleUpdateBC(bcParticle)
 		);
 		
-		SwarmInformation swarmInfos[] = {egocentricSwarmInfo, altercentricSwarmInfo, bcSwarmInfo};
+		SwarmInformation swarmInfos[] = {egocentricSwarmInfo, altercentricSwarmInfo, bcSwarmInfo};*/
 		
-		/*SpeciesParticle simpleParticle = new MyParticle(SpeciesType.EGOCENTRIC);
+		SpeciesParticle simpleParticle = new MyParticle(SpeciesType.EGOCENTRIC);
 		SwarmInformation simpleSwarmInfo = new SwarmInformation(
 				Swarm.DEFAULT_NUMBER_OF_PARTICLES, 
 				simpleParticle,
 				new ParticleUpdateSimple(simpleParticle)
 		);
 		
-		SwarmInformation swarmInfos[] = {simpleSwarmInfo};*/
+		SwarmInformation swarmInfos[] = {simpleSwarmInfo};
 		
 		// Create a swarm (using 'MyParticle' as sample particle and 'MyFitnessFunction' as finess function)
 		MultiSwarm multiSwarm = new MultiSwarm(swarmInfos, new RastriginFunction());
@@ -88,7 +89,10 @@ public class Main {
 
 		// Show best position
 		double bestPosition[] = multiSwarm.getBestPosition();
-		System.out.println("Best position: [" + bestPosition[0] + ", " + bestPosition[1] + " ]\nBest fitness: " + multiSwarm.getBestFitness() + "\nKnown Solution: [0.0, 0.0]");
+		System.out.print("Best position: [" + bestPosition[0]);
+		for(int i = 0; i < bestPosition.length; ++i)
+			System.out.print(", " + bestPosition[i]);
+		System.out.println("]\nBest fitness: " + multiSwarm.getBestFitness());
 	}
 
 }
