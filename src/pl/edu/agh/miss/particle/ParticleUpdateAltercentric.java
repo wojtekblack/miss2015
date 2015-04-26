@@ -5,10 +5,16 @@ import net.sourceforge.jswarm_pso.ParticleUpdate;
 import net.sourceforge.jswarm_pso.Swarm;
 
 public class ParticleUpdateAltercentric extends ParticleUpdate {
+	
+	private double globalIncrement;
 
 	public ParticleUpdateAltercentric(Particle particle) {
 		super(particle);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void setGlobalIncrement(double globalIncrement) {
+		this.globalIncrement = globalIncrement;
 	}
 
 	@Override
@@ -16,17 +22,16 @@ public class ParticleUpdateAltercentric extends ParticleUpdate {
 		double position[] = particle.getPosition();
 		double velocity[] = particle.getVelocity();
 		double globalBestPosition[] = swarm.getBestPosition();
-		double neighBestPosition[] = swarm.getNeighborhoodBestPosition(particle);
 
 		// Update velocity and position
 		for (int i = 0; i < position.length; i++) {
 			// Update position
 			position[i] = position[i] + velocity[i];
+			
 
 			// Update velocity
-			velocity[i] = swarm.getInertia() * velocity[i] // Inertia
-					+ Math.random() * swarm.getNeighborhoodIncrement() * (neighBestPosition[i] - position[i]) // Neighborhood best					
-					+ Math.random() * swarm.getGlobalIncrement() * (globalBestPosition[i] - position[i]); // Global best
+			velocity[i] = swarm.getInertia() * velocity[i] // Inertia				
+					+ Math.random() * globalIncrement * (globalBestPosition[i] - position[i]); // Global best
 		}
 	}
 

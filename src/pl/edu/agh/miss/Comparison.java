@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sourceforge.jswarm_pso.Neighborhood;
 import net.sourceforge.jswarm_pso.Neighborhood1D;
+import net.sourceforge.jswarm_pso.ParticleUpdate;
 import net.sourceforge.jswarm_pso.Swarm;
 import pl.edu.agh.miss.chart.Chart;
 import pl.edu.agh.miss.chart.Point;
@@ -13,6 +14,7 @@ import pl.edu.agh.miss.multidimensional.RastriginFunction;
 import pl.edu.agh.miss.particle.ParticleUpdateAltercentric;
 import pl.edu.agh.miss.particle.ParticleUpdateBC;
 import pl.edu.agh.miss.particle.ParticleUpdateEgocentric;
+import pl.edu.agh.miss.particle.ParticleUpdateGC;
 import pl.edu.agh.miss.particle.SpeciesParticle;
 import pl.edu.agh.miss.particle.SpeciesType;
 import pl.edu.agh.miss.swarm.MultiSwarm;
@@ -75,37 +77,52 @@ public class Comparison {
 	
 	private static void runMultiSpeciesSolution(){
 		SpeciesParticle egocentricParticle = new MyParticle(SpeciesType.EGOCENTRIC);
+		ParticleUpdateEgocentric update1 = new ParticleUpdateEgocentric(egocentricParticle);
+		update1.setLocalIncrement(0.8);
+		update1.setGlobalIncrement(0.8);
 		SwarmInformation egocentricSwarmInfo = new SwarmInformation(
-				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 3, 
+				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 4, 
 				egocentricParticle,
-				new ParticleUpdateEgocentric(egocentricParticle)
+				update1
 		);
 		SpeciesParticle altercentricParticle = new MyParticle(SpeciesType.ALTERCENTRIC);
+		ParticleUpdateAltercentric update2 = new ParticleUpdateAltercentric(altercentricParticle);
+		update2.setGlobalIncrement(0.8);
 		SwarmInformation altercentricSwarmInfo = new SwarmInformation(
-				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 3, 
+				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 4, 
 				altercentricParticle,
-				new ParticleUpdateAltercentric(altercentricParticle)
+				update2
 		);
 		SpeciesParticle bcParticle = new MyParticle(SpeciesType.BAD_AT_CONFLICT_HANDLING);
+		ParticleUpdateBC update3 = new ParticleUpdateBC(bcParticle);
+		update3.setLocalIncrement(0.8);
+		update3.setNeighbourIncrement(0.9);
+		update3.setGlobalIncrement(0.8);
 		SwarmInformation bcSwarmInfo = new SwarmInformation(
-				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 3, 
+				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 4, 
 				bcParticle,
-				new ParticleUpdateBC(bcParticle)
+				update3
+		);
+		SpeciesParticle gcParticle = new MyParticle(SpeciesType.GOOD_AT_CONFLICT_HANDLING);
+		ParticleUpdateGC update4 = new ParticleUpdateGC(gcParticle);
+		update4.setNeighbourIncrement(0.9);
+		update4.setGlobalIncrement(0.8);
+		SwarmInformation gcSwarmInfo = new SwarmInformation(
+				Swarm.DEFAULT_NUMBER_OF_PARTICLES / 4, 
+				gcParticle,
+				update4
 		);
 		
-		SwarmInformation swarmInfos[] = {egocentricSwarmInfo, altercentricSwarmInfo, bcSwarmInfo};
+		SwarmInformation swarmInfos[] = {egocentricSwarmInfo, altercentricSwarmInfo, bcSwarmInfo, gcSwarmInfo};
 
 		MultiSwarm multiSwarm = new MultiSwarm(swarmInfos, new RastriginFunction());
 
 		// Use neighborhood
 		Neighborhood neigh = new Neighborhood1D(Swarm.DEFAULT_NUMBER_OF_PARTICLES / 5, true);
 		multiSwarm.setNeighborhood(neigh);
-		multiSwarm.setNeighborhoodIncrement(0.9);
 
 		// Tune swarm's update parameters (if needed)
 		multiSwarm.setInertia(0.95);
-		multiSwarm.setParticleIncrement(0.8);
-		multiSwarm.setGlobalIncrement(0.8);
 
 		// Set position (and velocity) constraints. I.e.: where to look for solutions
 		multiSwarm.setMaxPosition(100);

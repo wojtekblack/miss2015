@@ -11,7 +11,7 @@ package net.sourceforge.jswarm_pso;
  * @author Pablo Cingolani <pcingola@users.sourceforge.net>
  */
 public abstract class ParticleUpdate {
-
+	
 	/**
 	 * Constructor 
 	 * @param particle : Sample of particles that will be updated later
