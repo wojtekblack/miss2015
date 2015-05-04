@@ -18,10 +18,11 @@ public class RastriginFunction extends FitnessFunction{
 		double result = position.length * A;
 		
 		for(double x : position){
+			x = x + 1;
 			result += x * x - A * Math.cos(2 * Math.PI * x);
 		}
 		
-		return result;
+		return result + 1;
 	}
 
 }
