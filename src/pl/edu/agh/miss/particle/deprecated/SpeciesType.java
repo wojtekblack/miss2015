@@ -1,5 +1,8 @@
 package pl.edu.agh.miss.particle.deprecated;
-
+/**
+ * 
+ * @deprecated
+ */
 public enum SpeciesType {
 	EGOCENTRIC,
 	ALTERCENTRIC,

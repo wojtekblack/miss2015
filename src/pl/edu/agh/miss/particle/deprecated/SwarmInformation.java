@@ -1,13 +1,16 @@
-package pl.edu.agh.miss.swarm;
+package pl.edu.agh.miss.particle.deprecated;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.edu.agh.miss.particle.species.SpeciesParticle;
-import pl.edu.agh.miss.particle.species.SpeciesType;
+import pl.edu.agh.miss.particle.deprecated.SpeciesParticle;
+import pl.edu.agh.miss.particle.deprecated.SpeciesType;
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
-
+/**
+ * 
+ * @deprecated
+ */
 public class SwarmInformation {
 	
 	private int numberOfParticles;

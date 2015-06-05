@@ -1,13 +1,15 @@
-package pl.edu.agh.miss.swarm;
+package pl.edu.agh.miss.particle.deprecated;
 
 import net.sourceforge.jswarm_pso.FitnessFunction;
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
 import net.sourceforge.jswarm_pso.Swarm;
 import net.sourceforge.jswarm_pso.VariablesUpdate;
-import pl.edu.agh.miss.particle.MyParticle;
-import pl.edu.agh.miss.particle.species.SpeciesParticle;
 
+/**
+ * 
+ * @deprecated
+ */
 public class MultiSwarm extends Swarm {
 	
 	private SwarmInformation swarmInfos[];

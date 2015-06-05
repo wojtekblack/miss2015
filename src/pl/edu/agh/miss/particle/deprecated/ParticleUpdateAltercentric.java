@@ -3,7 +3,10 @@ package pl.edu.agh.miss.particle.deprecated;
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
 import net.sourceforge.jswarm_pso.Swarm;
-
+/**
+ * 
+ * @deprecated
+ */
 public class ParticleUpdateAltercentric extends ParticleUpdate {
 	
 	private double globalIncrement;

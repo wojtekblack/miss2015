@@ -17,16 +17,16 @@ import pl.edu.agh.miss.chart.Chart;
 import pl.edu.agh.miss.chart.Point;
 import pl.edu.agh.miss.chart.ScatterChart;
 import pl.edu.agh.miss.multidimensional.RastriginFunction;
-import pl.edu.agh.miss.particle.MyParticle;
 import pl.edu.agh.miss.particle.StandardParticle;
+import pl.edu.agh.miss.particle.deprecated.MultiSwarm;
+import pl.edu.agh.miss.particle.deprecated.MyParticle;
 import pl.edu.agh.miss.particle.deprecated.ParticleUpdateAltercentric;
 import pl.edu.agh.miss.particle.deprecated.ParticleUpdateBC;
 import pl.edu.agh.miss.particle.deprecated.ParticleUpdateEgocentric;
 import pl.edu.agh.miss.particle.deprecated.ParticleUpdateGC;
 import pl.edu.agh.miss.particle.deprecated.SpeciesParticle;
 import pl.edu.agh.miss.particle.deprecated.SpeciesType;
-import pl.edu.agh.miss.swarm.MultiSwarm;
-import pl.edu.agh.miss.swarm.SwarmInformation;
+import pl.edu.agh.miss.particle.deprecated.SwarmInformation;
 
 public class ComparisonNIterations {
 	private static final int EXECUTIONS = 20;
@@ -149,7 +149,7 @@ public class ComparisonNIterations {
 				bcParticle,
 				update3
 		);
-		SpeciesParticle gcParticle = new MyParticle(SpeciesType.GOOD_AT_CONFLICT_HANDLING);
+		MyParticle gcParticle = new MyParticle(SpeciesType.GOOD_AT_CONFLICT_HANDLING);
 		ParticleUpdateGC update4 = new ParticleUpdateGC(gcParticle);
 		update4.setNeighbourIncrement(0.9);
 		update4.setGlobalIncrement(0.8);

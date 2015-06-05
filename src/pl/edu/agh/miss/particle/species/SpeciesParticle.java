@@ -1,13 +1,10 @@
-package pl.edu.agh.miss.particle.deprecated;
+package pl.edu.agh.miss.particle.species;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import net.sourceforge.jswarm_pso.Particle;
-/**
- * 
- * @deprecated
- */
+
 public class SpeciesParticle extends Particle {
 	
 	private SpeciesType type;
