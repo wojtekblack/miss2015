@@ -20,7 +20,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.util.ShapeUtilities;
 
-public class ScatterChart extends Chart{
+public class ScatterChart extends Chart<List<Point>>{
 	private Map<String, List<Point>> data;
 	
 	public ScatterChart(){
@@ -28,7 +28,7 @@ public class ScatterChart extends Chart{
 	}
 
 	@Override
-	public Chart addSeries(String name, List<Point> values) {
+	public Chart<List<Point>> addSeries(String name, List<Point> values) {
 		data.put(name, values);
 		return this;
 	}

@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import net.sourceforge.jswarm_pso.Neighborhood;
 import net.sourceforge.jswarm_pso.Neighborhood1D;
 import pl.edu.agh.miss.chart.Chart;
+import pl.edu.agh.miss.chart.ChartCombiner;
 import pl.edu.agh.miss.chart.Point;
 import pl.edu.agh.miss.chart.ScatterChart;
+import pl.edu.agh.miss.chart.SpeciesPieChart;
 import pl.edu.agh.miss.multidimensional.RastriginFunction;
 import pl.edu.agh.miss.particle.MyParticle;
 import pl.edu.agh.miss.particle.species.SpeciesParticle;
@@ -22,17 +25,17 @@ import pl.edu.agh.miss.particle.species.SpeciesType;
 import pl.edu.agh.miss.swarm.MultiSwarm;
 import pl.edu.agh.miss.swarm.SwarmInformation;
 
+@SuppressWarnings("rawtypes")
 public class Comparison {
-	private static final int EXECUTIONS = 5;
-	private static Map<String, Chart> pieCharts = new HashMap<String, Chart>();
+	private static final int EXECUTIONS = 50;
+	private static Map<String, Chart> pieCharts = new TreeMap<String, Chart>();
 	private static Map<String, Map<Integer, List<Double>>> results = new HashMap<String, Map<Integer,List<Double>>>();
-	
-	
-	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		for(int i = 0; i < EXECUTIONS; i++){
 			System.out.println("Execution " + (i+1) + " of " + EXECUTIONS);
 			run("Swarm 1", new int[] {25});
+			run("Swarm 2", new int[] {15, 5, 5});
 		}
 		
 		Chart chart = new ScatterChart().setTitle("PSO Ristrigin optimizing, " + NUMBER_OF_DIMENTIONS + " dimensions, " + NUMBER_OF_ITERATIONS + " iterations").
@@ -58,6 +61,11 @@ public class Comparison {
 		
 		chart.addStandardDeviation().saveWithDateStamp("raw/chart");
 		
+		try{
+			ChartCombiner.combine(chart, pieCharts);
+		} catch (Exception e) {
+			
+		}
 	}
 	
 	private static double standardDeviation(List<Double> values, double average){
@@ -75,7 +83,8 @@ public class Comparison {
 	private static void run(String name, int [] particles){
 		//create pie chart
 		if(!pieCharts.containsKey(name)){
-			
+			Chart<Integer> pieChart = new SpeciesPieChart().addSpeciesData(name, particles);
+			pieCharts.put(name, pieChart);
 		}
 		
 		//create particles
