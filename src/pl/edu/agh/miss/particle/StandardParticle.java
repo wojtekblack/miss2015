@@ -1,5 +1,6 @@
-package pl.edu.agh.miss;
+package pl.edu.agh.miss.particle;
 
+import pl.edu.agh.miss.Simulation;
 import net.sourceforge.jswarm_pso.Particle;
 
 public class StandardParticle extends Particle{

@@ -1,28 +1,30 @@
 package pl.edu.agh.miss;
 
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_DIMENTIONS;
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_ITERATIONS;
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_PARTICLES;
+import static pl.edu.agh.miss.Simulation.NUMBER_OF_SKIPPED_ITERATIONS;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import net.sourceforge.jswarm_pso.Neighborhood;
 import net.sourceforge.jswarm_pso.Neighborhood1D;
-import net.sourceforge.jswarm_pso.ParticleUpdate;
 import net.sourceforge.jswarm_pso.Swarm;
 import pl.edu.agh.miss.chart.Chart;
 import pl.edu.agh.miss.chart.Point;
 import pl.edu.agh.miss.chart.ScatterChart;
 import pl.edu.agh.miss.multidimensional.RastriginFunction;
-import pl.edu.agh.miss.particle.ParticleUpdateAltercentric;
-import pl.edu.agh.miss.particle.ParticleUpdateBC;
-import pl.edu.agh.miss.particle.ParticleUpdateEgocentric;
-import pl.edu.agh.miss.particle.ParticleUpdateGC;
-import pl.edu.agh.miss.particle.SpeciesParticle;
-import pl.edu.agh.miss.particle.SpeciesType;
+import pl.edu.agh.miss.particle.MyParticle;
+import pl.edu.agh.miss.particle.StandardParticle;
+import pl.edu.agh.miss.particle.deprecated.ParticleUpdateAltercentric;
+import pl.edu.agh.miss.particle.deprecated.ParticleUpdateBC;
+import pl.edu.agh.miss.particle.deprecated.ParticleUpdateEgocentric;
+import pl.edu.agh.miss.particle.deprecated.ParticleUpdateGC;
+import pl.edu.agh.miss.particle.deprecated.SpeciesParticle;
+import pl.edu.agh.miss.particle.deprecated.SpeciesType;
 import pl.edu.agh.miss.swarm.MultiSwarm;
 import pl.edu.agh.miss.swarm.SwarmInformation;
-import static pl.edu.agh.miss.Simulation.NUMBER_OF_DIMENTIONS;
-import static pl.edu.agh.miss.Simulation.NUMBER_OF_ITERATIONS;
-import static pl.edu.agh.miss.Simulation.NUMBER_OF_PARTICLES;
-import static pl.edu.agh.miss.Simulation.NUMBER_OF_SKIPPED_ITERATIONS;
 
 public class Comparison {
 	private static List<Point> standardResults = new ArrayList<Point>();

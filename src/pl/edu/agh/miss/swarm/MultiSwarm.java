@@ -5,8 +5,8 @@ import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
 import net.sourceforge.jswarm_pso.Swarm;
 import net.sourceforge.jswarm_pso.VariablesUpdate;
-import pl.edu.agh.miss.MyParticle;
-import pl.edu.agh.miss.particle.SpeciesParticle;
+import pl.edu.agh.miss.particle.MyParticle;
+import pl.edu.agh.miss.particle.deprecated.SpeciesParticle;
 
 public class MultiSwarm extends Swarm {
 	

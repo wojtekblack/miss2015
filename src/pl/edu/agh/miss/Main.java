@@ -10,13 +10,10 @@ import net.sourceforge.jswarm_pso.Swarm;
 import pl.edu.agh.miss.chart.Chart;
 import pl.edu.agh.miss.chart.Point;
 import pl.edu.agh.miss.chart.ScatterChart;
-import pl.edu.agh.miss.multidimensional.AlgebraUtils;
 import pl.edu.agh.miss.multidimensional.RastriginFunction;
-import pl.edu.agh.miss.particle.ParticleUpdateAltercentric;
-import pl.edu.agh.miss.particle.ParticleUpdateBC;
-import pl.edu.agh.miss.particle.ParticleUpdateEgocentric;
-import pl.edu.agh.miss.particle.SpeciesParticle;
-import pl.edu.agh.miss.particle.SpeciesType;
+import pl.edu.agh.miss.particle.MyParticle;
+import pl.edu.agh.miss.particle.deprecated.SpeciesParticle;
+import pl.edu.agh.miss.particle.deprecated.SpeciesType;
 import pl.edu.agh.miss.swarm.MultiSwarm;
 import pl.edu.agh.miss.swarm.SwarmInformation;
 

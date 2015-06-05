@@ -1,4 +1,4 @@
-package pl.edu.agh.miss.particle;
+package pl.edu.agh.miss.particle.deprecated;
 
 public enum SpeciesType {
 	EGOCENTRIC,
