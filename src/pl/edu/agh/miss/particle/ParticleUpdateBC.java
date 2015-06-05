@@ -35,6 +35,10 @@ public class ParticleUpdateBC extends ParticleUpdate {
 		double particleBestPosition[] = particle.getBestPosition();
 		double neighBestPosition[] = swarm.getNeighborhoodBestPosition(particle);
 
+		localIncrement = Math.random();
+		neighbourIncrement = Math.random();
+		globalIncrement = 2.0 - localIncrement - neighbourIncrement;
+		
 		// Update velocity and position
 		for (int i = 0; i < position.length; i++) {
 			// Update position

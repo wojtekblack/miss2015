@@ -27,7 +27,7 @@ import pl.edu.agh.miss.swarm.MultiSwarm;
 import pl.edu.agh.miss.swarm.SwarmInformation;
 
 public class ComparisonNIterations {
-	private static final int EXECUTIONS = 1;
+	private static final int EXECUTIONS = 20;
 	private static Map<Integer, List<Double>> standardResults = new HashMap<Integer, List<Double>>();
 	private static Map<Integer, List<Double>> multiSpeciesResults = new HashMap<Integer, List<Double>>();
 	
@@ -125,7 +125,7 @@ public class ComparisonNIterations {
 		update1.setLocalIncrement(0.8);
 		update1.setGlobalIncrement(0.8);
 		SwarmInformation egocentricSwarmInfo = new SwarmInformation(
-				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.22), 
+				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.25), 
 				egocentricParticle,
 				update1
 		);
@@ -133,7 +133,7 @@ public class ComparisonNIterations {
 		ParticleUpdateAltercentric update2 = new ParticleUpdateAltercentric(altercentricParticle);
 		update2.setGlobalIncrement(0.8);
 		SwarmInformation altercentricSwarmInfo = new SwarmInformation(
-				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.15), 
+				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.25), 
 				altercentricParticle,
 				update2
 		);
@@ -143,7 +143,7 @@ public class ComparisonNIterations {
 		update3.setNeighbourIncrement(0.9);
 		update3.setGlobalIncrement(0.8);
 		SwarmInformation bcSwarmInfo = new SwarmInformation(
-				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.18), 
+				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.15), 
 				bcParticle,
 				update3
 		);
@@ -152,7 +152,7 @@ public class ComparisonNIterations {
 		update4.setNeighbourIncrement(0.9);
 		update4.setGlobalIncrement(0.8);
 		SwarmInformation gcSwarmInfo = new SwarmInformation(
-				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.45), 
+				(int) (Swarm.DEFAULT_NUMBER_OF_PARTICLES * 0.35), 
 				gcParticle,
 				update4
 		);
