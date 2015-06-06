@@ -8,6 +8,7 @@ import java.util.Map;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.title.Title;
 import org.jfree.data.general.DefaultPieDataset;
 
 import pl.edu.agh.miss.particle.species.SpeciesType;
@@ -22,11 +23,18 @@ public class SpeciesPieChart extends Chart<Integer>{
 	
 	public SpeciesPieChart addSpeciesData(String swarmName, int [] speciesArray){
 		setTitle(swarmName);
+		int sum = 0;
+		
 		
 		for(int i = 0; i < speciesArray.length; i++){
+			if(speciesArray[i] <= 0) continue;
 			String speciesName = SpeciesType.values()[i].toString();
 			data.put(speciesName, speciesArray[i]);
+			
+			sum += speciesArray[i];
 		}
+		
+		addSubTitle("Number of particles: " + sum);
 		
 		return this;
 	}
@@ -40,6 +48,12 @@ public class SpeciesPieChart extends Chart<Integer>{
 		}
 		
 		JFreeChart chart = ChartFactory.createPieChart(title, dataset, true, true, false);
+		
+		if(subtitles != null) {
+			for(Title subtitle : subtitles)
+			chart.addSubtitle(subtitle);
+		}
+		
 		ChartUtilities.saveChartAsJPEG(file, chart, size[0], size[1]);
 	}
 

@@ -27,12 +27,12 @@ public class ChartCombiner {
 			Chart secondaryChart = secondaryCharts.get(name);
 			
 			File secondaryFileChart = new File("results/tmp/secondary_" + name + ".jpg");
-			secondaryChart.setHeight(basicHeight / secondaryCharts.size()).setWidth(basicWidth / secondaryCharts.size()).save(secondaryFileChart);
+			secondaryChart.setHeight(basicHeight / 2).setWidth(basicWidth / secondaryCharts.size()).save(secondaryFileChart);
 			BufferedImage secondartChartImage = ImageIO.read(secondaryFileChart);
 			secondaryChartImages.add(secondartChartImage);
 		}
 		
-		BufferedImage resultImage = new BufferedImage(basicWidth, basicHeight + basicHeight / secondaryChartImages.size(), mainChartImage.getType());
+		BufferedImage resultImage = new BufferedImage(basicWidth, basicHeight + basicHeight / 2, mainChartImage.getType());
 		resultImage.createGraphics().drawImage(mainChartImage, 0, 0, null);
 		
 		for(int i = 0; i < secondaryChartImages.size(); i++){

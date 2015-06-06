@@ -29,13 +29,15 @@ import pl.edu.agh.miss.swarm.SwarmInformation;
 public class Comparison {
 	private static final int EXECUTIONS = 50;
 	private static Map<String, Chart> pieCharts = new TreeMap<String, Chart>();
-	private static Map<String, Map<Integer, List<Double>>> results = new HashMap<String, Map<Integer,List<Double>>>();
+	private static Map<String, Map<Integer, List<Double>>> results = new TreeMap<String, Map<Integer,List<Double>>>();
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		for(int i = 0; i < EXECUTIONS; i++){
 			System.out.println("Execution " + (i+1) + " of " + EXECUTIONS);
-			run("Swarm 1", new int[] {25});
-			run("Swarm 2", new int[] {15, 5, 5});
+			run("Swarm 1", new int[] {24});
+			//run("Swarm 2", new int[] {14, 5, 5});
+			run("Swarm 2", new int[] {4, 4, 0, 4, 2, 2, 2, 6});
+			run("Swarm 3", new int[] {6, 4, 4, 4, 0, 0, 0, 4});
 		}
 		
 		Chart chart = new ScatterChart().setTitle("PSO Ristrigin optimizing, " + NUMBER_OF_DIMENTIONS + " dimensions, " + NUMBER_OF_ITERATIONS + " iterations").
