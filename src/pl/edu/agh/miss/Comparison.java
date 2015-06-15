@@ -27,7 +27,7 @@ import pl.edu.agh.miss.swarm.SwarmInformation;
 
 @SuppressWarnings("rawtypes")
 public class Comparison {
-	private static final int EXECUTIONS = 50;
+	private static final int EXECUTIONS = 30;
 	private static Map<String, Chart> pieCharts = new TreeMap<String, Chart>();
 	private static Map<String, Map<Integer, List<Double>>> results = new TreeMap<String, Map<Integer,List<Double>>>();
 	@SuppressWarnings("unchecked")

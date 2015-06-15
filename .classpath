@@ -4,6 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="lib" path="lib/jcommon-1.0.23.jar"/>
 	<classpathentry kind="lib" path="lib/jfreechart-1.0.19.jar"/>
-	<classpathentry kind="lib" path="jswarm-pso_2_08.jar"/>
+	<classpathentry kind="lib" path="lib/jswarm-pso_2_08_modified.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
