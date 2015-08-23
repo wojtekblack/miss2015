@@ -18,6 +18,24 @@ The species and their weights used for calculating velocity are described in a t
 | Global Only | 1.0 | 0.0 | 0.0 | This particle is influenced only by global best known position |
 | Local Only | 0.0 | 0.0 | 1.0 | This particle is influenced only by particle's best known position |
 | Neighbourhood Only | 0.0 | 1.0 | 0.0 | This particle is influenced only by neighbourhood's best known position |
-| Random | random | random | random | This particle multiplies all three influences by random weghts. The sum of weights is equal to 3 |
+| Random | random | random | random | This particle multiplies all three influences by random weghts in every iteration of the algorithm. The sum of weights is always equal to 3 |
 
-A swarm composed of several species is less likely to get stuck in a local optima than a swarm of standard particles.
+A swarm composed of several species is less likely to get stuck in local optima than a swarm of standard particles. Moreover, multispecies swarm is usually able to traverse a bigger part of search space. These regularities are caused by a fact that different particles may have different inspiration during selection of direction and can be scattered on various areas of search space.
+
+## Third party libraries
+The project uses the following libraries:
+* JSwarm - open source implementation of standard PSO algorithm - [link](http://jswarm-pso.sourceforge.net/)
+* JFreeChart - open source chart library - [link](http://www.jfree.org/jfreechart/)
+
+## Execution
+
+### Running an example
+The repository contains [one class] (https://github.com/wojtekblack/miss2015/blob/master/src/pl/edu/agh/miss/Comparison.java) with a main method that runs a comparison between multispecies and standard PSO. To execute this code follow these steps:
+1. Make sure you meet prerequisites:
+  * [Java](https://www.java.com), version 7 or newer
+  * [Eclipse](https://eclipse.org/), preferred version Kepler
+2. Clone the repository
+3. Import the project to eclipse
+4. Add all jars located in /lib directory to project's build path
+5. Run comparison as Java Aplication
+
