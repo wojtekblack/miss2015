@@ -65,3 +65,7 @@ The optimization can be adjusted by modifying the following variables:
   ```java
   public static final int NUMBER_OF_SKIPPED_ITERATIONS
   ```
+
+
+### Creating a multispecies swarm
+Firstly, you need to create an array of [SwarmInformation](src/pl/edu/agh/miss/swarm/SwarmInformation.java) instances. 
