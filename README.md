@@ -95,3 +95,15 @@ multiSwarm.setNeighborhood(neighbourhood);
 multiSwarm.setMaxPosition(100);
 multiSwarm.setMinPosition(-100);
 ```
+
+### Performing optimization
+To perform one step of simulation simply invoke:
+```java
+multiSwarm.evolve();
+```
+
+To get current get position or fitness use:
+```java
+multiSwarm.getBestFitness();
+multiSwarm.getBestPosition();
+```
