@@ -48,7 +48,7 @@ The optimization can be adjusted by modifying the following variables:
 * In class **pl.edu.agh.miss.Comparison** :
  
   * The number of times simulation will be executed, the results are the average of results of all executions.
-```java
-private static final int EXECUTIONS 
-```
+  ```java
+  private static final int EXECUTIONS 
+  ```
 * In class **pl.edu.agh.miss.Simulation** :
