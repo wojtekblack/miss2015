@@ -75,8 +75,8 @@ Firstly, you need to create an array of [SwarmInformation](src/pl/edu/agh/miss/s
 
 Example:
 ```java
-  SwarmInformation [] swarmInfos = new SwarmInformation[3];
-		swarmInfos[0] = new SwarmInformation(10, SpeciesType.ALL);
-		swarmInfos[1] = new SwarmInformation(5, SpeciesType.GLOBAL_AND_LOCAL);
-		swarmInfos[2] = new SwarmInformation(5, SpeciesType.RANDOM);
+SwarmInformation [] swarmInfos = new SwarmInformation[3];
+swarmInfos[0] = new SwarmInformation(10, SpeciesType.ALL);
+swarmInfos[1] = new SwarmInformation(5, SpeciesType.GLOBAL_AND_LOCAL);
+swarmInfos[2] = new SwarmInformation(5, SpeciesType.RANDOM);
 ```
