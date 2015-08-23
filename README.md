@@ -38,5 +38,5 @@ The repository contains [one class] (https://github.com/wojtekblack/miss2015/blo
 2. Clone the repository
 3. Import the project to eclipse
 4. Add all jars located in /lib directory to project's build path
-5. Run comparison as Java Aplication
+5. Run **pl.edu.agh.miss.Comparison** as Java Aplication
 
