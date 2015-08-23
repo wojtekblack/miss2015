@@ -52,3 +52,16 @@ The optimization can be adjusted by modifying the following variables:
   private static final int EXECUTIONS 
   ```
 * In class **pl.edu.agh.miss.Simulation** :
+
+  * Number of dimensions
+  ```java
+  public static int NUMBER_OF_DIMENTIONS
+  ```
+  * Number of steps in each execution
+  ```java
+  public static final int NUMBER_OF_ITERATIONS
+  ```
+  * Number of initial iterations that will not be included in result charts to increase charts' readability
+  ```java
+  public static final int NUMBER_OF_SKIPPED_ITERATIONS
+  ```
