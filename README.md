@@ -37,6 +37,17 @@ The repository contains [one class] (https://github.com/wojtekblack/miss2015/blo
   * [Eclipse](https://eclipse.org/), preferred version Kepler
 2. Clone the repository
 3. Import the project to eclipse
-4. Add all jars located in /lib directory to project's build path
-5. Run **pl.edu.agh.miss.Comparison** as Java Aplication
+4. Add all jars located in *lib* directory to project's build path
+5. Run **pl.edu.agh.miss.Comparison** as Java Application
 
+The program will run an optimization of Rastrigin function with both standard and multispecies algorithms. Generated charts will be saved in *results* directory. The results are calculated as an average of results produced in a specified number of executions. 
+
+### Parameters of example simulation
+The optimization can be adjusted by modifying the following variables:
+
+* In class **pl.edu.agh.miss.Comparison** :
+The number of times simulation will be executed, the results are the average of results of all executions.
+```java
+private static final int EXECUTIONS 
+```
+* In class **pl.edu.agh.miss.Simulation** :
