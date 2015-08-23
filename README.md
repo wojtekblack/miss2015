@@ -19,3 +19,5 @@ The species and their weights used for calculating velocity are described in a t
 | Local Only | 0.0 | 0.0 | 1.0 | This particle is influenced only by particle's best known position |
 | Neighbourhood Only | 0.0 | 1.0 | 0.0 | This particle is influenced only by neighbourhood's best known position |
 | Random | random | random | random | This particle multiplies all three influences by random weghts. The sum of weights is equal to 3 |
+
+A swarm composed of several species is less likely to get stuck in a local optima than a swarm of standard particles.
