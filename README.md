@@ -31,6 +31,7 @@ The project uses the following libraries:
 
 ### Running an example
 The repository contains [one class] (https://github.com/wojtekblack/miss2015/blob/master/src/pl/edu/agh/miss/Comparison.java) with a main method that runs a comparison between multispecies and standard PSO. To execute this code follow these steps:
+
 1. Make sure you meet prerequisites:
   * [Java](https://www.java.com), version 7 or newer
   * [Eclipse](https://eclipse.org/), preferred version Kepler
