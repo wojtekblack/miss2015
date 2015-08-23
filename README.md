@@ -68,4 +68,15 @@ The optimization can be adjusted by modifying the following variables:
 
 
 ### Creating a multispecies swarm
-Firstly, you need to create an array of [SwarmInformation](src/pl/edu/agh/miss/swarm/SwarmInformation.java) instances. 
+Firstly, you need to create an array of [SwarmInformation](src/pl/edu/agh/miss/swarm/SwarmInformation.java) instances. A SwarmInformation object contains two information: 
+
+* Number of particles of specified type
+* Species of those particles - an instance of enum [SpeciesType](src/pl/edu/agh/miss/particle/species/SpeciesType.java)
+
+Example:
+```java
+  SwarmInformation [] swarmInfos = new SwarmInformation[3];
+		swarmInfos[0] = new SwarmInformation(10, SpeciesType.ALL);
+		swarmInfos[1] = new SwarmInformation(5, SpeciesType.GLOBAL_AND_LOCAL);
+		swarmInfos[2] = new SwarmInformation(5, SpeciesType.RANDOM);
+```
