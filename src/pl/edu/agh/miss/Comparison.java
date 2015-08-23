@@ -99,8 +99,8 @@ public class Comparison {
 			if(particles[i] != 0){
 				cnt += particles[i];
 				
-				SpeciesParticle particle = new MyParticle(SpeciesType.values()[i]);
-				SwarmInformation swarmInformation = new SwarmInformation(particles[i], particle, new SpeciesParticleUpdate(particle));
+				SpeciesType type = SpeciesType.values()[i];
+				SwarmInformation swarmInformation = new SwarmInformation(particles[i], type);
 				
 				swarmInformations.add(swarmInformation);
 			}

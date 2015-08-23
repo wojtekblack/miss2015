@@ -3,10 +3,12 @@ package pl.edu.agh.miss.swarm;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.edu.agh.miss.particle.species.SpeciesParticle;
-import pl.edu.agh.miss.particle.species.SpeciesType;
 import net.sourceforge.jswarm_pso.Particle;
 import net.sourceforge.jswarm_pso.ParticleUpdate;
+import pl.edu.agh.miss.particle.MyParticle;
+import pl.edu.agh.miss.particle.species.SpeciesParticle;
+import pl.edu.agh.miss.particle.species.SpeciesParticleUpdate;
+import pl.edu.agh.miss.particle.species.SpeciesType;
 
 public class SwarmInformation {
 	
@@ -16,6 +18,21 @@ public class SwarmInformation {
 	private SpeciesParticle sampleParticle;
 	private ParticleUpdate particleUpdate;
 	
+	
+	public SwarmInformation(int numberOfParticles, SpeciesParticle sampleParticle) {
+		this.numberOfParticles = numberOfParticles;
+		this.type = sampleParticle.getType();
+		this.sampleParticle = sampleParticle;
+		this.particleUpdate = new SpeciesParticleUpdate(sampleParticle);
+	}
+	
+	public SwarmInformation(int numberOfParticles, SpeciesType type){
+		this(numberOfParticles, new MyParticle(type));
+	}
+	
+	/**
+	 * @deprecated
+	 */
 	public SwarmInformation(int numberOfParticles, SpeciesParticle sampleParticle, ParticleUpdate particleUpdate) {
 		this.numberOfParticles = numberOfParticles;
 		this.type = sampleParticle.getType();
